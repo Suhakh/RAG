@@ -1,0 +1,51 @@
+# ScholarBot Configuration
+app:
+  name: "ScholarBot"
+  theme: "auto"  # light, dark, auto
+  upload_limit_mb: 50
+  max_documents: 300
+
+# Model Configuration
+models:
+  llm:
+    name: "llama3.1:8b"
+    temperature: 0.7
+    max_tokens: 2048
+    context_window: 4096
+  
+  embeddings:
+    name: "nomic-embed-text"
+    # Alternative: "mxbai-embed-large"
+
+# RAG Pipeline Settings
+chunking:
+  chunk_size: 600
+  chunk_overlap: 110
+  separators: ["\n\n", "\n", ". ", " ", ""]
+
+retrieval:
+  top_k: 4
+  search_type: "mmr"  # similarity, mmr
+  mmr_diversity: 0.3
+  score_threshold: 0.0
+
+# Storage Paths
+storage:
+  vectordb_path: "./vectordb"
+  data_path: "./data"
+  history_path: "./history"
+  history_file: "history.json"
+
+# Performance Settings
+performance:
+  streaming: true
+  batch_size: 32
+  max_concurrent_requests: 1
+  memory_cleanup_interval: 100  # queries
+
+# UI Settings
+ui:
+  show_citations: true
+  show_sources: true
+  max_chat_history_display: 50
+  sidebar_width: 300
